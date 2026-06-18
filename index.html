@@ -6,13 +6,11 @@
 <title>Itinerario Gran Canaria</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Arial;
   background: #f4f6f8;
   color: #111;
 }
@@ -34,551 +32,230 @@ h1 {
   width: 94%;
   max-width: 760px;
   margin: auto;
-  padding-bottom: 30px;
 }
 
-/* BOTONES SUPERIORES */
+/* BOTONES ARRIBA */
 .quick-actions {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
-  width: 94%;
-  max-width: 760px;
-  margin: 0 auto 14px;
+  margin-bottom: 14px;
 }
 
 .quick-btn {
   border: none;
-  background: #ffffff;
-  color: #111;
-  border-radius: 14px;
-  padding: 10px 6px;
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
   font-size: 12px;
-  font-weight: 800;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+  font-weight: bold;
   cursor: pointer;
 }
 
-.quick-btn:active {
-  transform: scale(0.96);
-}
-
-.card {
-  margin: 12px 0;
-  border-radius: 18px;
-  overflow: hidden;
-  color: white;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-}
-
-.header {
-  padding: 15px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-}
+/* CARDS */
+.card { margin: 12px 0; border-radius: 16px; overflow: hidden; color: white; }
+.header { padding: 14px; font-weight: bold; cursor: pointer; }
 
 .content {
   max-height: 0;
   overflow: hidden;
-  background: #fff;
-  color: #111;
-  transition: max-height 0.35s ease, padding 0.35s ease;
-  padding: 0 14px;
+  background: white;
+  color: black;
+  transition: 0.4s;
+  padding: 0 12px;
 }
 
-.content.open {
-  max-height: 3500px;
-  padding: 14px;
-}
-
-.place-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 12px 0;
-}
+.content.open { max-height: 3000px; padding: 12px; }
 
 .place {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 9px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-}
-
-.place span {
-  flex: 1;
+  margin-bottom: 8px;
 }
 
 .nav-btn {
-  border: none;
-  background: #111;
+  background: black;
   color: white;
-  padding: 7px 10px;
   border-radius: 999px;
+  padding: 6px 10px;
+  border: none;
   font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
+  font-weight: bold;
 }
 
-.nav-btn:active {
-  transform: scale(0.96);
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.gallery img {
+img {
   width: 100%;
-  height: auto;
-  max-height: 260px;
-  object-fit: cover;
-  border-radius: 14px;
-  display: block;
-  background: #eee;
-}
-
-.note {
-  font-size: 13px;
-  color: #555;
-  background: #f7f7f7;
   border-radius: 12px;
-  padding: 10px;
-  margin-top: 10px;
-  line-height: 1.4;
+  margin-top: 8px;
 }
 
-/* COLORES */
-.blue { background:#3498db; }
-.orange { background:#e67e22; }
-.green { background:#27ae60; }
-.purple { background:#8e44ad; }
-.gray { background:#7f8c8d; }
+/* colores */
+.blue { background:#3498db }
+.orange { background:#e67e22 }
+.green { background:#27ae60 }
+.purple { background:#8e44ad }
+.gray { background:#7f8c8d }
 
-/* BOTÓN MAPA ABAJO */
+/* BOTÓN MAPA NEGRO */
 .map-small-btn {
   display: block;
-  width: fit-content;
-  margin: 26px auto 34px;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 999px;
-  background: #c0392b;
+  margin: 30px auto;
+  background: black;
   color: white;
-  font-size: 14px;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.20);
-}
-
-.map-small-btn:active {
-  transform: scale(0.97);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: bold;
 }
 
 /* OVERLAY MAPA */
 .map-overlay {
   position: fixed;
-  inset: 0;
-  background: white;
-  z-index: 9999;
-  display: none;
+  inset:0;
+  background:white;
+  display:none;
 }
 
-.map-overlay.active {
-  display: block;
-}
+.map-overlay.active { display:block; }
 
 .map-overlay iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
+  width:100%;
+  height:100%;
+  border:0;
 }
 
-/* BOTÓN CERRAR MAPA - ROJO Y MÁS ABAJO */
+/* BOTÓN CERRAR ROJO DERECHA + BAJADO */
 .close-map {
-  position: absolute;
-  top: calc(env(safe-area-inset-top) + 62px);
-  left: 12px;
-  z-index: 10000;
-  border: none;
-  background: #c0392b;
-  color: white;
-  padding: 10px 13px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+  position:absolute;
+  top:70px; /* lo bajamos */
+  right:12px; /* derecha */
+  background:#c0392b;
+  color:white;
+  border:none;
+  padding:10px;
+  border-radius:10px;
+  font-weight:bold;
 }
 
-/* MODAL ELECCIÓN */
-.choice-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 10001;
-  display: none;
-  align-items: flex-end;
-}
-
-.choice-overlay.active {
-  display: flex;
-}
-
-.choice-card {
-  width: 100%;
-  background: white;
-  border-radius: 22px 22px 0 0;
-  padding: 18px;
-  box-shadow: 0 -6px 20px rgba(0,0,0,0.25);
-}
-
-.choice-title {
-  font-size: 17px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.choice-place {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 14px;
-}
-
-.choice-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.choice-actions a {
-  text-decoration: none;
-  text-align: center;
-  padding: 13px 10px;
-  border-radius: 14px;
-  color: white;
-  font-weight: 800;
-  font-size: 14px;
-}
-
-.google {
-  background: #4285f4;
-}
-
-.waze {
-  background: #33ccff;
-  color: #003344 !important;
-}
-
-.cancel-btn {
-  margin-top: 10px;
-  width: 100%;
-  border: none;
-  background: #eee;
-  padding: 12px;
-  border-radius: 14px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* iPhone */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 20px;
-  }
-
-  .header {
-    font-size: 15px;
-  }
-
-  .place {
-    font-size: 14px;
-  }
-
-  .gallery img {
-    max-height: 230px;
-  }
-
-  .quick-btn {
-    font-size: 11px;
-    padding: 9px 4px;
-  }
-}
 </style>
 </head>
 
 <body>
 
 <h1>🌴 Itinerario Gran Canaria</h1>
-<div class="subtitle">24–28 junio · Telde como base</div>
+<div class="subtitle">24–28 junio · Telde</div>
 
-<!-- BOTONES SUPERIORES -->
-<div class="quick-actions">
-  <button class="quick-btn" onclick="openChoice(event, 'Aeropuerto Josep Tarradellas Barcelona-El Prat', 41.2971, 2.0785)">
-    ✈️ BCN
-  </button>
-
-  <button class="quick-btn" onclick="openChoice(event, 'Apartamento en Telde, Gran Canaria', 27.9955, -15.4174)">
-    🏠 Apartamento
-  </button>
-
-  <button class="quick-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">
-    ✈️ Gran Canaria
-  </button>
-</div>
-
+<!-- BOTONES ARRIBA -->
 <div class="container">
+<div class="quick-actions">
 
-  <!-- DIA 24 -->
-  <div class="card blue">
-    <div class="header" onclick="toggleCard(this)">Día 24 – Guayadeque + Este</div>
-    <div class="content">
-      <ul class="place-list">
+<button class="quick-btn" onclick="openChoice(event,'Aeropuerto Barcelona',41.2971,2.0785)">
+✈️ BCN
+</button>
 
-        <li class="place">
-          <span>✈️ Llegada Aeropuerto Gran Canaria</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">Ir</button>
-        </li>
+<button class="quick-btn" onclick="openChoice(event,'Apartamento Telde',27.9967,-15.4178)">
+🏠 Apartamento
+</button>
 
-        <li class="place">
-          <span>⛰️ Barranco de Guayadeque</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Barranco de Guayadeque', 27.9146, -15.4752)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>🍽️ Restaurante Tagoror</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Restaurante Tagoror Guayadeque', 27.9161, -15.4756)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>📸 Playa Tufia</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Tufia', 27.9570, -15.3703)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>🌊 Playa de Melenara</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara', 27.9915, -15.3760)">Ir</button>
-        </li>
-
-      </ul>
-
-      <div class="note">
-        Llegada, comida en cueva y tarde tranquila por la costa de Telde.
-      </div>
-
-      <div class="gallery">
-        <img src="guayadeque.jpg" loading="lazy" alt="Guayadeque">
-        <img src="Tufia1.jpg" loading="lazy" alt="Tufia">
-        <img src="melenara.jpg" loading="lazy" alt="Melenara">
-      </div>
-    </div>
-  </div>
-
-  <!-- DIA 25 -->
-  <div class="card orange">
-    <div class="header" onclick="toggleCard(this)">Día 25 – Mogán + Salunna + Dunas</div>
-    <div class="content">
-      <ul class="place-list">
-
-        <li class="place">
-          <span>📍 Puerto de Mogán</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Puerto de Mogán', 27.8195, -15.7657)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>🍽️ Salunna</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Salunna Puerto de Mogán', 27.8198, -15.7654)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>🌅 Dunas de Maspalomas</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Dunas de Maspalomas', 27.7401, -15.5856)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>🍽️ Restaurante El Senador</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Restaurante El Senador Maspalomas', 27.7377, -15.5988)">Ir</button>
-        </li>
-
-      </ul>
-
-      <div class="note">
-        Mogán por la mañana, Salunna para comer y atardecer en las dunas.
-      </div>
-
-      <div class="gallery">
-        <img src="puerto-de-mogan-1.jpg" loading="lazy" alt="Puerto de Mogán">
-        <img src="dunas-maspalomas.jpg" loading="lazy" alt="Dunas de Maspalomas">
-      </div>
-    </div>
-  </div>
-
-  <!-- DIA 26 -->
-  <div class="card green">
-    <div class="header" onclick="toggleCard(this)">Día 26 – Interior</div>
-    <div class="content">
-      <ul class="place-list">
-
-        <li class="place">
-          <span>⛰️ Tejeda</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Tejeda', 27.9957, -15.6156)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>🥾 Roque Nublo</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Roque Nublo', 27.9680, -15.6114)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>📍 Pico de las Nieves</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Pico de las Nieves', 27.9620, -15.5715)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>📸 Barranco de las Vacas</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Barranco de las Vacas', 27.9159, -15.4751)">Ir</button>
-        </li>
-
-      </ul>
-
-      <div class="note">
-        Día de interior: vistas, curvas y ruta corta al Roque Nublo.
-      </div>
-
-      <div class="gallery">
-        <img src="ROQUE1.jpg" loading="lazy" alt="Roque Nublo">
-        <img src="barranco_vacas.jpeg" loading="lazy" alt="Barranco de las Vacas">
-      </div>
-    </div>
-  </div>
-
-  <!-- DIA 27 -->
-  <div class="card purple">
-    <div class="header" onclick="toggleCard(this)">Día 27 – Las Palmas + Agaete</div>
-    <div class="content">
-      <ul class="place-list">
-
-        <li class="place">
-          <span>🏙️ Vegueta</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Vegueta', 28.1007, -15.4146)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>🌊 Playa de Las Canteras</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Las Canteras', 28.1400, -15.4345)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>🌅 Agaete</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Agaete', 28.1006, -15.6994)">Ir</button>
-        </li>
-
-      </ul>
-
-      <div class="note">
-        Mañana en Las Palmas y tarde con atardecer en Agaete.
-      </div>
-
-      <div class="gallery">
-        <img src="melenara.jpg" loading="lazy" alt="Costa de Gran Canaria">
-      </div>
-    </div>
-  </div>
-
-  <!-- DIA 28 -->
-  <div class="card gray">
-    <div class="header" onclick="toggleCard(this)">Día 28 – Relax + Vuelo</div>
-    <div class="content">
-      <ul class="place-list">
-
-        <li class="place">
-          <span>☕ Desayuno tranquilo</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Telde', 27.9955, -15.4174)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>🌊 Paseo por Melenara</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara', 27.9915, -15.3760)">Ir</button>
-        </li>
-
-        <li class="place">
-          <span>✈️ Aeropuerto</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">Ir</button>
-        </li>
-
-      </ul>
-
-      <div class="note">
-        Día sin complicarse: desayuno, paseo corto y aeropuerto con margen.
-      </div>
-    </div>
-  </div>
-
-  <button class="map-small-btn" onclick="openMap()">📍 Ver mapa completo</button>
+<button class="quick-btn" onclick="openChoice(event,'Aeropuerto Gran Canaria',27.9319,-15.3866)">
+✈️ Canarias
+</button>
 
 </div>
 
-<!-- MAPA COMPLETO -->
+<!-- DIA 24 -->
+<div class="card blue">
+<div class="header" onclick="toggleCard(this)">Día 24</div>
+<div class="content">
+
+<div class="place">
+<span>Guayadeque</span>
+<button class="nav-btn" onclick="openChoice(event,'Guayadeque',27.9146,-15.4752)">Ir</button>
+</div>
+
+<img src="guayadeque.jpg">
+<img src="Tufia1.jpg">
+<img src="melenara.jpg">
+
+</div>
+</div>
+
+<!-- DIA 25 -->
+<div class="card orange">
+<div class="header" onclick="toggleCard(this)">Día 25</div>
+<div class="content">
+
+<div class="place">
+<span>Puerto de Mogán</span>
+<button class="nav-btn" onclick="openChoice(event,'Puerto de Mogán',27.8195,-15.7657)">Ir</button>
+</div>
+
+<img src="puerto-de-mogan-1.jpg">
+<img src="dunas-maspalomas.jpg">
+
+</div>
+</div>
+
+<!-- DIA 26 -->
+<div class="card green">
+<div class="header" onclick="toggleCard(this)">Día 26</div>
+<div class="content">
+
+<div class="place">
+<span>Roque Nublo</span>
+<button class="nav-btn" onclick="openChoice(event,'Roque Nublo',27.9680,-15.6114)">Ir</button>
+</div>
+
+<img src="ROQUE1.jpg">
+<img src="barranco_vacas.jpeg">
+
+</div>
+</div>
+
+<!-- DIA 27 -->
+<div class="card purple">
+<div class="header" onclick="toggleCard(this)">Día 27</div>
+<div class="content">
+
+<img src="melenara.jpg">
+
+</div>
+</div>
+
+<!-- BOTÓN MAPA -->
+<button class="map-small-btn" onclick="openMap()">📍 Ver mapa completo</button>
+
+</div>
+
+<!-- MAPA FULLSCREEN -->
 <div id="mapOverlay" class="map-overlay">
-  <button class="close-map" onclick="closeMap()">✖</button>
-  <iframe src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs"></iframe>
-</div>
+<button class="close-map" onclick="closeMap()">✖</button>
 
-<!-- MODAL GOOGLE / WAZE -->
-<div id="choiceOverlay" class="choice-overlay" onclick="closeChoice()">
-  <div class="choice-card" onclick="event.stopPropagation()">
-    <div class="choice-title">¿Cómo quieres ir?</div>
-    <div id="choicePlace" class="choice-place"></div>
+<iframe src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs"></iframe>
 
-    <div class="choice-actions">
-      <a id="googleLink" class="google" target="_blank" rel="noopener">Google Maps</a>
-      <a id="wazeLink" class="waze" target="_blank" rel="noopener">Waze</a>
-    </div>
-
-    <button class="cancel-btn" onclick="closeChoice()">Cancelar</button>
-  </div>
 </div>
 
 <script>
-function toggleCard(header) {
-  const content = header.nextElementSibling;
-  content.classList.toggle("open");
+
+function toggleCard(el){
+  el.nextElementSibling.classList.toggle("open");
 }
 
-function openMap() {
+function openMap(){
   document.getElementById("mapOverlay").classList.add("active");
 }
 
-function closeMap() {
+function closeMap(){
   document.getElementById("mapOverlay").classList.remove("active");
 }
 
-function openChoice(event, place, lat, lng) {
-  event.stopPropagation();
+function openChoice(e,place,lat,lng){
+  e.stopPropagation();
 
-  const encodedPlace = encodeURIComponent(place);
-
-  document.getElementById("choicePlace").innerText = place;
-
-  document.getElementById("googleLink").href =
-    "https://www.google.com/maps/dir/?api=1&destination=" + encodedPlace;
-
-  document.getElementById("wazeLink").href =
-    "https://www.waze.com/ul?ll=" + lat + "," + lng + "&navigate=yes&utm_source=gran_canaria_itinerario";
-
-  document.getElementById("choiceOverlay").classList.add("active");
+  window.location.href =
+  "https://www.waze.com/ul?ll="+lat+","+lng+"&navigate=yes";
 }
 
-function closeChoice() {
-  document.getElementById("choiceOverlay").classList.remove("active");
-}
 </script>
 
 </body>
