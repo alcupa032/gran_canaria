@@ -62,7 +62,7 @@ h1 {
 }
 
 .content.open {
-  max-height: 3200px;
+  max-height: 3500px;
   padding: 14px;
 }
 
@@ -136,7 +136,7 @@ h1 {
 .purple { background:#8e44ad; }
 .gray { background:#7f8c8d; }
 
-/* BOTÓN MAPA PEQUEÑO ABAJO */
+/* BOTÓN MAPA ABAJO */
 .map-small-btn {
   display: block;
   width: fit-content;
@@ -175,11 +175,11 @@ h1 {
   border: 0;
 }
 
-/* BOTÓN CERRAR MAPA - MOVIDO A LA IZQUIERDA */
+/* BOTÓN CERRAR MAPA */
 .close-map {
   position: absolute;
-  top: 60px;       /* antes 12px */
-  right: 12px;
+  top: calc(env(safe-area-inset-top) + 14px);
+  left: 12px;
   z-index: 10000;
   border: none;
   background: rgba(0,0,0,0.85);
@@ -188,9 +188,10 @@ h1 {
   border-radius: 12px;
   font-size: 15px;
   font-weight: bold;
+  cursor: pointer;
 }
 
-/* MODAL ELECCIÓN MAPS/WAZE */
+/* MODAL ELECCIÓN */
 .choice-overlay {
   position: fixed;
   inset: 0;
@@ -260,7 +261,7 @@ h1 {
   cursor: pointer;
 }
 
-/* iPhone fino */
+/* iPhone */
 @media (max-width: 480px) {
   h1 {
     font-size: 20px;
@@ -293,6 +294,7 @@ h1 {
     <div class="header" onclick="toggleCard(this)">Día 24 – Guayadeque + Este</div>
     <div class="content">
       <ul class="place-list">
+
         <li class="place">
           <span>✈️ Llegada Aeropuerto Gran Canaria</span>
           <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">Ir</button>
@@ -300,7 +302,7 @@ h1 {
 
         <li class="place">
           <span>⛰️ Barranco de Guayadeque</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Barranco de Guayadeque, Gran Canaria', 27.9146, -15.4752)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Barranco de Guayadeque', 27.9146, -15.4752)">Ir</button>
         </li>
 
         <li class="place">
@@ -310,23 +312,24 @@ h1 {
 
         <li class="place">
           <span>📸 Playa Tufia</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Tufia, Gran Canaria', 27.9570, -15.3703)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Playa de Tufia', 27.9570, -15.3703)">Ir</button>
         </li>
 
         <li class="place">
           <span>🌊 Playa de Melenara</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara, Telde', 27.9915, -15.3760)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara', 27.9915, -15.3760)">Ir</button>
         </li>
+
       </ul>
 
       <div class="note">
-        Día tranquilo pero completo: llegada, comida en cueva y tarde de costa cerca de Telde.
+        Llegada, comida en cueva y tarde tranquila por la costa de Telde.
       </div>
 
       <div class="gallery">
-        <img src="guayadeque.jpg" loading="lazy" alt="Guayadeque">
-        <img src="Tufia1.jpg" loading="lazy" alt="Tufia">
-        <img src="melenara.jpg" loading="lazy" alt="Melenara">
+        guayadeque.jpg
+        Tufia1.jpg
+        melenara.jpg
       </div>
     </div>
   </div>
@@ -336,14 +339,15 @@ h1 {
     <div class="header" onclick="toggleCard(this)">Día 25 – Mogán + Salunna + Dunas</div>
     <div class="content">
       <ul class="place-list">
+
         <li class="place">
           <span>📍 Puerto de Mogán</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Puerto de Mogán, Gran Canaria', 27.8195, -15.7657)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Puerto de Mogán', 27.8195, -15.7657)">Ir</button>
         </li>
 
         <li class="place">
           <span>🍽️ Salunna</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Salunna, Puerto de Mogán', 27.8198, -15.7654)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Salunna Puerto de Mogán', 27.8198, -15.7654)">Ir</button>
         </li>
 
         <li class="place">
@@ -355,15 +359,16 @@ h1 {
           <span>🍽️ Restaurante El Senador</span>
           <button class="nav-btn" onclick="openChoice(event, 'Restaurante El Senador Maspalomas', 27.7377, -15.5988)">Ir</button>
         </li>
+
       </ul>
 
       <div class="note">
-        Día fuerte del viaje: Mogán por la mañana, comida en Salunna y atardecer en las dunas.
+        Mogán por la mañana, Salunna para comer y atardecer en las dunas.
       </div>
 
       <div class="gallery">
-        <img src="puerto-de-mogan-1.jpg" loading="lazy" alt="Puerto de Mogán">
-        <img src="dunas-maspalomas.jpg" loading="lazy" alt="Dunas de Maspalomas">
+        puerto-de-mogan-1.jpg
+        dunas-maspalomas.jpg
       </div>
     </div>
   </div>
@@ -373,34 +378,36 @@ h1 {
     <div class="header" onclick="toggleCard(this)">Día 26 – Interior</div>
     <div class="content">
       <ul class="place-list">
+
         <li class="place">
           <span>⛰️ Tejeda</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Tejeda, Gran Canaria', 27.9957, -15.6156)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Tejeda', 27.9957, -15.6156)">Ir</button>
         </li>
 
         <li class="place">
           <span>🥾 Roque Nublo</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Roque Nublo, Gran Canaria', 27.9680, -15.6114)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Roque Nublo', 27.9680, -15.6114)">Ir</button>
         </li>
 
         <li class="place">
           <span>📍 Pico de las Nieves</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Pico de las Nieves, Gran Canaria', 27.9620, -15.5715)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Pico de las Nieves', 27.9620, -15.5715)">Ir</button>
         </li>
 
         <li class="place">
           <span>📸 Barranco de las Vacas</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Barranco de las Vacas, Gran Canaria', 27.9159, -15.4751)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Barranco de las Vacas', 27.9159, -15.4751)">Ir</button>
         </li>
+
       </ul>
 
       <div class="note">
-        Día de interior: carreteras con curvas, vistas brutales y ruta corta al Roque Nublo.
+        Día de interior: vistas, curvas y ruta corta al Roque Nublo.
       </div>
 
       <div class="gallery">
-        <img src="ROQUE1.jpg" loading="lazy" alt="Roque Nublo">
-        <img src="barranco_vacas.jpeg" loading="lazy" alt="Barranco de las Vacas">
+        ROQUE1.jpg
+        barranco_vacas.jpeg
       </div>
     </div>
   </div>
@@ -410,28 +417,30 @@ h1 {
     <div class="header" onclick="toggleCard(this)">Día 27 – Las Palmas + Agaete</div>
     <div class="content">
       <ul class="place-list">
+
         <li class="place">
           <span>🏙️ Vegueta</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Vegueta, Las Palmas de Gran Canaria', 28.1007, -15.4146)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Vegueta', 28.1007, -15.4146)">Ir</button>
         </li>
 
         <li class="place">
           <span>🌊 Playa de Las Canteras</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Las Canteras, Las Palmas de Gran Canaria', 28.1400, -15.4345)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Playa de Las Canteras', 28.1400, -15.4345)">Ir</button>
         </li>
 
         <li class="place">
           <span>🌅 Agaete</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Agaete, Gran Canaria', 28.1006, -15.6994)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Agaete', 28.1006, -15.6994)">Ir</button>
         </li>
+
       </ul>
 
       <div class="note">
-        Mañana en Las Palmas y tarde/noche en Agaete para terminar con atardecer.
+        Mañana en Las Palmas y tarde con atardecer en Agaete.
       </div>
 
       <div class="gallery">
-        <img src="melenara.jpg" loading="lazy" alt="Costa de Gran Canaria">
+        melenara.jpg
       </div>
     </div>
   </div>
@@ -441,20 +450,22 @@ h1 {
     <div class="header" onclick="toggleCard(this)">Día 28 – Relax + Vuelo</div>
     <div class="content">
       <ul class="place-list">
+
         <li class="place">
           <span>☕ Desayuno tranquilo</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Telde, Gran Canaria', 27.9955, -15.4174)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Telde', 27.9955, -15.4174)">Ir</button>
         </li>
 
         <li class="place">
           <span>🌊 Paseo por Melenara</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara, Telde', 27.9915, -15.3760)">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara', 27.9915, -15.3760)">Ir</button>
         </li>
 
         <li class="place">
           <span>✈️ Aeropuerto</span>
           <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">Ir</button>
         </li>
+
       </ul>
 
       <div class="note">
@@ -463,18 +474,17 @@ h1 {
     </div>
   </div>
 
-  <!-- BOTÓN MAPA ABAJO -->
   <button class="map-small-btn" onclick="openMap()">📍 Ver mapa completo</button>
 
 </div>
 
-<!-- OVERLAY MAPA COMPLETO -->
+<!-- MAPA COMPLETO -->
 <div id="mapOverlay" class="map-overlay">
   <button class="close-map" onclick="closeMap()">✖</button>
-  <iframe src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs"></iframe>
+  https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs</iframe>
 </div>
 
-<!-- MODAL ELEGIR GOOGLE MAPS / WAZE -->
+<!-- MODAL GOOGLE / WAZE -->
 <div id="choiceOverlay" class="choice-overlay" onclick="closeChoice()">
   <div class="choice-card" onclick="event.stopPropagation()">
     <div class="choice-title">¿Cómo quieres ir?</div>
@@ -490,39 +500,42 @@ h1 {
 </div>
 
 <script>
-function toggleCard(header){
+function toggleCard(header) {
   const content = header.nextElementSibling;
   content.classList.toggle("open");
 }
 
-function openMap(){
+function openMap() {
   document.getElementById("mapOverlay").classList.add("active");
 }
 
-function closeMap(){
+function closeMap() {
   document.getElementById("mapOverlay").classList.remove("active");
 }
 
-function openChoice(event, place, lat, lng){
+function openChoice(event, place, lat, lng) {
   event.stopPropagation();
 
   const encodedPlace = encodeURIComponent(place);
-  const coords = lat + "," + lng;
+  const encodedCoords = encodeURIComponent(lat + "," + lng);
 
   document.getElementById("choicePlace").innerText = place;
 
-  /* Google Maps por texto */
   document.getElementById("googleLink").href =
     "https://www.google.com/maps/dir/?api=1&destination=" + encodedPlace;
 
-  /* Waze por coordenadas: formato recomendado para evitar errores de búsqueda */
+  /*
+    Waze oficial:
+    https://waze.com/ul?ll=LAT,LNG&navigate=yes
+    Usamos coordenadas para evitar que Waze interprete mal nombres o acentos.
+  */
   document.getElementById("wazeLink").href =
-    "https://www.waze.com/ul?ll=" + coords + "&navigate=yes&zoom=17";
+    "https://www.waze.com/ul?ll=" + encodedCoords + "&navigate=yes";
 
   document.getElementById("choiceOverlay").classList.add("active");
 }
 
-function closeChoice(){
+function closeChoice() {
   document.getElementById("choiceOverlay").classList.remove("active");
 }
 </script>
