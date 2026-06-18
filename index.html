@@ -62,7 +62,7 @@ h1 {
 }
 
 .content.open {
-  max-height: 2600px;
+  max-height: 3200px;
   padding: 14px;
 }
 
@@ -175,10 +175,11 @@ h1 {
   border: 0;
 }
 
+/* BOTÓN CERRAR MAPA - MOVIDO A LA IZQUIERDA */
 .close-map {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: calc(env(safe-area-inset-top) + 14px);
+  left: 12px;
   z-index: 10000;
   border: none;
   background: rgba(0,0,0,0.85);
@@ -295,23 +296,27 @@ h1 {
       <ul class="place-list">
         <li class="place">
           <span>✈️ Llegada Aeropuerto Gran Canaria</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">Ir</button>
         </li>
+
         <li class="place">
           <span>⛰️ Barranco de Guayadeque</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Barranco de Guayadeque, Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Barranco de Guayadeque, Gran Canaria', 27.9146, -15.4752)">Ir</button>
         </li>
+
         <li class="place">
           <span>🍽️ Restaurante Tagoror</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Restaurante Tagoror Guayadeque')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Restaurante Tagoror Guayadeque', 27.9161, -15.4756)">Ir</button>
         </li>
+
         <li class="place">
           <span>📸 Playa Tufia</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Tufia, Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Playa de Tufia, Gran Canaria', 27.9570, -15.3703)">Ir</button>
         </li>
+
         <li class="place">
           <span>🌊 Playa de Melenara</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara, Telde')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara, Telde', 27.9915, -15.3760)">Ir</button>
         </li>
       </ul>
 
@@ -334,19 +339,22 @@ h1 {
       <ul class="place-list">
         <li class="place">
           <span>📍 Puerto de Mogán</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Puerto de Mogán, Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Puerto de Mogán, Gran Canaria', 27.8195, -15.7657)">Ir</button>
         </li>
+
         <li class="place">
           <span>🍽️ Salunna</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Salunna, Puerto de Mogán')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Salunna, Puerto de Mogán', 27.8198, -15.7654)">Ir</button>
         </li>
+
         <li class="place">
           <span>🌅 Dunas de Maspalomas</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Dunas de Maspalomas')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Dunas de Maspalomas', 27.7401, -15.5856)">Ir</button>
         </li>
+
         <li class="place">
           <span>🍽️ Restaurante El Senador</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Restaurante El Senador Maspalomas')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Restaurante El Senador Maspalomas', 27.7377, -15.5988)">Ir</button>
         </li>
       </ul>
 
@@ -368,19 +376,22 @@ h1 {
       <ul class="place-list">
         <li class="place">
           <span>⛰️ Tejeda</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Tejeda, Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Tejeda, Gran Canaria', 27.9957, -15.6156)">Ir</button>
         </li>
+
         <li class="place">
           <span>🥾 Roque Nublo</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Roque Nublo, Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Roque Nublo, Gran Canaria', 27.9680, -15.6114)">Ir</button>
         </li>
+
         <li class="place">
           <span>📍 Pico de las Nieves</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Pico de las Nieves, Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Pico de las Nieves, Gran Canaria', 27.9620, -15.5715)">Ir</button>
         </li>
+
         <li class="place">
           <span>📸 Barranco de las Vacas</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Barranco de las Vacas, Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Barranco de las Vacas, Gran Canaria', 27.9159, -15.4751)">Ir</button>
         </li>
       </ul>
 
@@ -402,15 +413,17 @@ h1 {
       <ul class="place-list">
         <li class="place">
           <span>🏙️ Vegueta</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Vegueta, Las Palmas de Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Vegueta, Las Palmas de Gran Canaria', 28.1007, -15.4146)">Ir</button>
         </li>
+
         <li class="place">
           <span>🌊 Playa de Las Canteras</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Las Canteras, Las Palmas de Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Playa de Las Canteras, Las Palmas de Gran Canaria', 28.1400, -15.4345)">Ir</button>
         </li>
+
         <li class="place">
           <span>🌅 Agaete</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Agaete, Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Agaete, Gran Canaria', 28.1006, -15.6994)">Ir</button>
         </li>
       </ul>
 
@@ -419,7 +432,7 @@ h1 {
       </div>
 
       <div class="gallery">
-        <img src="melenara.jpg" loading="lazy" alt="Costa Gran Canaria">
+        <img src="melenara.jpg" loading="lazy" alt="Costa de Gran Canaria">
       </div>
     </div>
   </div>
@@ -431,15 +444,17 @@ h1 {
       <ul class="place-list">
         <li class="place">
           <span>☕ Desayuno tranquilo</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Telde, Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Telde, Gran Canaria', 27.9955, -15.4174)">Ir</button>
         </li>
+
         <li class="place">
           <span>🌊 Paseo por Melenara</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara, Telde')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara, Telde', 27.9915, -15.3760)">Ir</button>
         </li>
+
         <li class="place">
           <span>✈️ Aeropuerto</span>
-          <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria')">Ir</button>
+          <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">Ir</button>
         </li>
       </ul>
 
@@ -489,18 +504,21 @@ function closeMap(){
   document.getElementById("mapOverlay").classList.remove("active");
 }
 
-function openChoice(event, place){
+function openChoice(event, place, lat, lng){
   event.stopPropagation();
 
   const encodedPlace = encodeURIComponent(place);
+  const coords = lat + "," + lng;
 
   document.getElementById("choicePlace").innerText = place;
 
+  /* Google Maps por texto */
   document.getElementById("googleLink").href =
     "https://www.google.com/maps/dir/?api=1&destination=" + encodedPlace;
 
+  /* Waze por coordenadas: formato recomendado para evitar errores de búsqueda */
   document.getElementById("wazeLink").href =
-    "https://waze.com/ul?q=" + encodedPlace + "&navigate=yes";
+    "https://www.waze.com/ul?ll=" + coords + "&navigate=yes&zoom=17";
 
   document.getElementById("choiceOverlay").classList.add("active");
 }
