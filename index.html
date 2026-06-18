@@ -37,6 +37,32 @@ h1 {
   padding-bottom: 30px;
 }
 
+/* BOTONES SUPERIORES */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 94%;
+  max-width: 760px;
+  margin: 0 auto 14px;
+}
+
+.quick-btn {
+  border: none;
+  background: #ffffff;
+  color: #111;
+  border-radius: 14px;
+  padding: 10px 6px;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+  cursor: pointer;
+}
+
+.quick-btn:active {
+  transform: scale(0.96);
+}
+
 .card {
   margin: 12px 0;
   border-radius: 18px;
@@ -140,16 +166,16 @@ h1 {
 .map-small-btn {
   display: block;
   width: fit-content;
-  margin: 18px auto 28px;
+  margin: 26px auto 34px;
   padding: 10px 16px;
   border: none;
   border-radius: 999px;
-  background: #2c3e50;
+  background: #c0392b;
   color: white;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.20);
 }
 
 .map-small-btn:active {
@@ -175,20 +201,21 @@ h1 {
   border: 0;
 }
 
-/* BOTÓN CERRAR MAPA */
+/* BOTÓN CERRAR MAPA - ROJO Y MÁS ABAJO */
 .close-map {
   position: absolute;
-  top: calc(env(safe-area-inset-top) + 14px);
+  top: calc(env(safe-area-inset-top) + 62px);
   left: 12px;
   z-index: 10000;
   border: none;
-  background: rgba(0,0,0,0.85);
+  background: #c0392b;
   color: white;
   padding: 10px 13px;
   border-radius: 12px;
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
 }
 
 /* MODAL ELECCIÓN */
@@ -278,6 +305,11 @@ h1 {
   .gallery img {
     max-height: 230px;
   }
+
+  .quick-btn {
+    font-size: 11px;
+    padding: 9px 4px;
+  }
 }
 </style>
 </head>
@@ -286,6 +318,21 @@ h1 {
 
 <h1>🌴 Itinerario Gran Canaria</h1>
 <div class="subtitle">24–28 junio · Telde como base</div>
+
+<!-- BOTONES SUPERIORES -->
+<div class="quick-actions">
+  <button class="quick-btn" onclick="openChoice(event, 'Aeropuerto Josep Tarradellas Barcelona-El Prat', 41.2971, 2.0785)">
+    ✈️ BCN
+  </button>
+
+  <button class="quick-btn" onclick="openChoice(event, 'Apartamento en Telde, Gran Canaria', 27.9955, -15.4174)">
+    🏠 Apartamento
+  </button>
+
+  <button class="quick-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">
+    ✈️ Gran Canaria
+  </button>
+</div>
 
 <div class="container">
 
@@ -327,9 +374,9 @@ h1 {
       </div>
 
       <div class="gallery">
-        guayadeque.jpg
-        Tufia1.jpg
-        melenara.jpg
+        <img src="guayadeque.jpg" loading="lazy" alt="Guayadeque">
+        <img src="Tufia1.jpg" loading="lazy" alt="Tufia">
+        <img src="melenara.jpg" loading="lazy" alt="Melenara">
       </div>
     </div>
   </div>
@@ -367,8 +414,8 @@ h1 {
       </div>
 
       <div class="gallery">
-        puerto-de-mogan-1.jpg
-        dunas-maspalomas.jpg
+        <img src="puerto-de-mogan-1.jpg" loading="lazy" alt="Puerto de Mogán">
+        <img src="dunas-maspalomas.jpg" loading="lazy" alt="Dunas de Maspalomas">
       </div>
     </div>
   </div>
@@ -406,8 +453,8 @@ h1 {
       </div>
 
       <div class="gallery">
-        ROQUE1.jpg
-        barranco_vacas.jpeg
+        <img src="ROQUE1.jpg" loading="lazy" alt="Roque Nublo">
+        <img src="barranco_vacas.jpeg" loading="lazy" alt="Barranco de las Vacas">
       </div>
     </div>
   </div>
@@ -440,7 +487,7 @@ h1 {
       </div>
 
       <div class="gallery">
-        melenara.jpg
+        <img src="melenara.jpg" loading="lazy" alt="Costa de Gran Canaria">
       </div>
     </div>
   </div>
@@ -481,7 +528,7 @@ h1 {
 <!-- MAPA COMPLETO -->
 <div id="mapOverlay" class="map-overlay">
   <button class="close-map" onclick="closeMap()">✖</button>
-  https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs</iframe>
+  <iframe src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs"></iframe>
 </div>
 
 <!-- MODAL GOOGLE / WAZE -->
@@ -517,20 +564,14 @@ function openChoice(event, place, lat, lng) {
   event.stopPropagation();
 
   const encodedPlace = encodeURIComponent(place);
-  const encodedCoords = encodeURIComponent(lat + "," + lng);
 
   document.getElementById("choicePlace").innerText = place;
 
   document.getElementById("googleLink").href =
     "https://www.google.com/maps/dir/?api=1&destination=" + encodedPlace;
 
-  /*
-    Waze oficial:
-    https://waze.com/ul?ll=LAT,LNG&navigate=yes
-    Usamos coordenadas para evitar que Waze interprete mal nombres o acentos.
-  */
   document.getElementById("wazeLink").href =
-    "https://www.waze.com/ul?ll=" + encodedCoords + "&navigate=yes";
+    "https://www.waze.com/ul?ll=" + lat + "," + lng + "&navigate=yes&utm_source=gran_canaria_itinerario";
 
   document.getElementById("choiceOverlay").classList.add("active");
 }
