@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario Gran Canaria</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Arial;
+  background: #f5f7fa;
+}
+
+h1 {
+  text-align: center;
+  margin: 12px;
+  font-size: 20px;
+}
+
+/* MAPA */
+.map {
+  width: 95%;
+  height: 200px;
+  margin: auto;
+  display: block;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* CONTENIDO */
+.container {
+  width: 95%;
+  margin: auto;
+}
+
+.card {
+  margin: 10px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+}
+
+.header {
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  background: white;
+  color: black;
+  transition: 0.3s;
+  padding: 0 12px;
+}
+
+.content.open {
+  max-height: 1200px;
+  padding: 12px;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 8px;
+}
+
+/* COLORES */
+.blue { background:#3498db; }
+.orange { background:#f39c12; }
+.green { background:#27ae60; }
+.purple { background:#8e44ad; }
+.gray { background:#95a5a6; }
+
+</style>
+</head>
+
+<body>
+
+<h1>🌴 Itinerario Gran Canaria</h1>
+
+<!-- MAPA TUYO -->
+<iframe class="map"
+src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs">
+</iframe>
+
+<div class="container">
+
+<!-- DIA 24 -->
+<div class="card blue" onclick="toggle(this)">
+  <div class="header">Día 24 – Guayadeque + Este</div>
+  <div class="content">
+    <ul>
+      <li>✈️ Llegada 09:30</li>
+      <li>⛰️ Guayadeque</li>
+      <li>🍽️ Tagoror</li>
+      <li>📸 Tufia</li>
+      <li>🌊 Melenara</li>
+    </ul>
+
+    <img src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg">
+    <img src="https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg">
+  </div>
+</div>
+
+<!-- DIA 25 -->
+<div class="card orange" onclick="toggle(this)">
+  <div class="header">Día 25 – Mogán + Salunna + Dunas</div>
+  <div class="content">
+    <ul>
+      <li>📍 Puerto de Mogán</li>
+      <li>🍽️ Salunna</li>
+      <li>🌅 Dunas Maspalomas</li>
+      <li>🍽️ El Senador</li>
+    </ul>
+
+    <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg">
+    <img src="https://images.pexels.com/photos/533923/pexels-photo-533923.jpeg">
+  </div>
+</div>
+
+<!-- DIA 26 -->
+<div class="card green" onclick="toggle(this)">
+  <div class="header">Día 26 – Interior</div>
+  <div class="content">
+    <ul>
+      <li>⛰️ Tejeda</li>
+      <li>🥾 Roque Nublo</li>
+      <li>📍 Pico de las Nieves</li>
+    </ul>
+
+    <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg">
+  </div>
+</div>
+
+<!-- DIA 27 -->
+<div class="card purple" onclick="toggle(this)">
+  <div class="header">Día 27 – Las Palmas + Agaete</div>
+  <div class="content">
+    <ul>
+      <li>🏙️ Vegueta</li>
+      <li>🌊 Las Canteras</li>
+      <li>🌅 Agaete</li>
+    </ul>
+
+    <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg">
+  </div>
+</div>
+
+<!-- DIA 28 -->
+<div class="card gray" onclick="toggle(this)">
+  <div class="header">Día 28 – Relax</div>
+  <div class="content">
+    <ul>
+      <li>☕ Desayuno</li>
+      <li>🌊 Paseo</li>
+      <li>✈️ Aeropuerto</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<script>
+function toggle(el){
+  const content = el.querySelector('.content');
+  content.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
