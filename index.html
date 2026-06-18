@@ -10,7 +10,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Arial;
+  font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   background: #f4f6f8;
   color: #111;
 }
@@ -32,109 +32,118 @@ h1 {
   width: 94%;
   max-width: 760px;
   margin: auto;
+  padding-bottom: 30px;
 }
 
-/* BOTONES ARRIBA */
+/* BOTONES SUPERIORES */
 .quick-actions {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin-bottom: 14px;
+  width: 94%;
+  max-width: 760px;
+  margin: 0 auto 14px;
 }
 
 .quick-btn {
   border: none;
-  background: white;
-  padding: 10px;
-  border-radius: 12px;
+  background: #ffffff;
+  color: #111;
+  border-radius: 14px;
+  padding: 10px 6px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 800;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.10);
   cursor: pointer;
 }
 
-/* CARDS */
-.card { margin: 12px 0; border-radius: 16px; overflow: hidden; color: white; }
-.header { padding: 14px; font-weight: bold; cursor: pointer; }
+.quick-btn:active {
+  transform: scale(0.96);
+}
+
+.card {
+  margin: 12px 0;
+  border-radius: 18px;
+  overflow: hidden;
+  color: white;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.header {
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
 
 .content {
   max-height: 0;
   overflow: hidden;
-  background: white;
-  color: black;
-  transition: 0.4s;
-  padding: 0 12px;
+  background: #fff;
+  color: #111;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 14px;
 }
 
-.content.open { max-height: 3000px; padding: 12px; }
-
-.place {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
+.content.open {
+  max-height: 3500px;
+  padding: 14px;
 }
 
-.nav-btn {
-  background: black;
-  color: white;
-  border-radius: 999px;
-  padding: 6px 10px;
-  border: none;
-  font-size: 12px;
-  font-weight: bold;
-}
+/* COLORES */
+.blue { background:#3498db; }
+.orange { background:#e67e22; }
+.green { background:#27ae60; }
+.purple { background:#8e44ad; }
+.gray { background:#7f8c8d; }
 
-img {
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 8px;
-}
-
-/* colores */
-.blue { background:#3498db }
-.orange { background:#e67e22 }
-.green { background:#27ae60 }
-.purple { background:#8e44ad }
-.gray { background:#7f8c8d }
-
-/* BOTÓN MAPA NEGRO */
+/* ✅ BOTÓN MAPA NEGRO */
 .map-small-btn {
   display: block;
-  margin: 30px auto;
-  background: black;
-  color: white;
-  border: none;
+  width: fit-content;
+  margin: 26px auto 34px;
   padding: 10px 16px;
+  border: none;
   border-radius: 999px;
-  font-weight: bold;
+  background: black; /* cambiado */
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.20);
 }
 
 /* OVERLAY MAPA */
 .map-overlay {
   position: fixed;
-  inset:0;
-  background:white;
-  display:none;
+  inset: 0;
+  background: white;
+  z-index: 9999;
+  display: none;
 }
 
-.map-overlay.active { display:block; }
+.map-overlay.active {
+  display: block;
+}
 
 .map-overlay iframe {
-  width:100%;
-  height:100%;
-  border:0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
-/* BOTÓN CERRAR ROJO DERECHA + BAJADO */
+/* ✅ BOTÓN CERRAR CORREGIDO */
 .close-map {
-  position:absolute;
-  top:70px; /* lo bajamos */
-  right:12px; /* derecha */
-  background:#c0392b;
-  color:white;
-  border:none;
-  padding:10px;
-  border-radius:10px;
-  font-weight:bold;
+  position: absolute;
+  top: calc(env(safe-area-inset-top) + 130px); /* más abajo */
+  right: 12px; /* derecha */
+  z-index: 10000;
+  background: #c0392b;
+  color: white;
+  border: none;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-weight: bold;
 }
 
 </style>
@@ -143,102 +152,73 @@ img {
 <body>
 
 <h1>🌴 Itinerario Gran Canaria</h1>
-<div class="subtitle">24–28 junio · Telde</div>
+<div class="subtitle">24–28 junio · Telde como base</div>
 
-<!-- BOTONES ARRIBA -->
-<div class="container">
+<!-- BOTONES SUPERIORES -->
 <div class="quick-actions">
+  <button class="quick-btn"
+    onclick="openChoice(event,'Aeropuerto Barcelona',41.2971,2.0785)">
+    ✈️ BCN
+  </button>
 
-<button class="quick-btn" onclick="openChoice(event,'Aeropuerto Barcelona',41.2971,2.0785)">
-✈️ BCN
-</button>
+  <button class="quick-btn"
+    onclick="openChoice(event,'C. Julián Torón, 17, 35200 Telde, Las Palmas',27.9968,-15.4180)">
+    🏠 Apartamento
+  </button>
 
-<button class="quick-btn" onclick="openChoice(event,'Apartamento Telde',27.9967,-15.4178)">
-🏠 Apartamento
-</button>
+  <button class="quick-btn"
+    onclick="openChoice(event,'Aeropuerto Gran Canaria',27.9319,-15.3866)">
+    ✈️ Gran Canaria
+  </button>
+</div>
 
-<button class="quick-btn" onclick="openChoice(event,'Aeropuerto Gran Canaria',27.9319,-15.3866)">
-✈️ Canarias
-</button>
+<div class="container">
+
+  <div class="card blue">
+    <div class="header" onclick="toggleCard(this)">Día 24 – Guayadeque + Este</div>
+    <div class="content">
+      <img src="guayadeque.jpg">
+      <img src="Tufia1.jpg">
+      <img src="melenara.jpg">
+    </div>
+  </div>
+
+  <div class="card orange">
+    <div class="header" onclick="toggleCard(this)">Día 25 – Mogán + Dunas</div>
+    <div class="content">
+      <img src="puerto-de-mogan-1.jpg">
+      <img src="dunas-maspalomas.jpg">
+    </div>
+  </div>
+
+  <div class="card green">
+    <div class="header" onclick="toggleCard(this)">Día 26 – Interior</div>
+    <div class="content">
+      <img src="ROQUE1.jpg">
+      <img src="barranco_vacas.jpeg">
+    </div>
+  </div>
+
+  <div class="card purple">
+    <div class="header" onclick="toggleCard(this)">Día 27</div>
+    <div class="content">
+      <img src="melenara.jpg">
+    </div>
+  </div>
+
+  <button class="map-small-btn" onclick="openMap()">📍 Ver mapa completo</button>
 
 </div>
 
-<!-- DIA 24 -->
-<div class="card blue">
-<div class="header" onclick="toggleCard(this)">Día 24</div>
-<div class="content">
-
-<div class="place">
-<span>Guayadeque</span>
-<button class="nav-btn" onclick="openChoice(event,'Guayadeque',27.9146,-15.4752)">Ir</button>
-</div>
-
-<img src="guayadeque.jpg">
-<img src="Tufia1.jpg">
-<img src="melenara.jpg">
-
-</div>
-</div>
-
-<!-- DIA 25 -->
-<div class="card orange">
-<div class="header" onclick="toggleCard(this)">Día 25</div>
-<div class="content">
-
-<div class="place">
-<span>Puerto de Mogán</span>
-<button class="nav-btn" onclick="openChoice(event,'Puerto de Mogán',27.8195,-15.7657)">Ir</button>
-</div>
-
-<img src="puerto-de-mogan-1.jpg">
-<img src="dunas-maspalomas.jpg">
-
-</div>
-</div>
-
-<!-- DIA 26 -->
-<div class="card green">
-<div class="header" onclick="toggleCard(this)">Día 26</div>
-<div class="content">
-
-<div class="place">
-<span>Roque Nublo</span>
-<button class="nav-btn" onclick="openChoice(event,'Roque Nublo',27.9680,-15.6114)">Ir</button>
-</div>
-
-<img src="ROQUE1.jpg">
-<img src="barranco_vacas.jpeg">
-
-</div>
-</div>
-
-<!-- DIA 27 -->
-<div class="card purple">
-<div class="header" onclick="toggleCard(this)">Día 27</div>
-<div class="content">
-
-<img src="melenara.jpg">
-
-</div>
-</div>
-
-<!-- BOTÓN MAPA -->
-<button class="map-small-btn" onclick="openMap()">📍 Ver mapa completo</button>
-
-</div>
-
-<!-- MAPA FULLSCREEN -->
+<!-- MAPA -->
 <div id="mapOverlay" class="map-overlay">
-<button class="close-map" onclick="closeMap()">✖</button>
-
-<iframe src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs"></iframe>
-
+  <button class="close-map" onclick="closeMap()">✖</button>
+  <iframe src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs"></iframe>
 </div>
 
 <script>
-
-function toggleCard(el){
-  el.nextElementSibling.classList.toggle("open");
+function toggleCard(header){
+  header.nextElementSibling.classList.toggle("open");
 }
 
 function openMap(){
@@ -251,11 +231,9 @@ function closeMap(){
 
 function openChoice(e,place,lat,lng){
   e.stopPropagation();
-
   window.location.href =
   "https://www.waze.com/ul?ll="+lat+","+lng+"&navigate=yes";
 }
-
 </script>
 
 </body>
