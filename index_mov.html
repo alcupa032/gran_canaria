@@ -8,17 +8,16 @@
 <style>
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Arial;
-  background: #f5f7fa;
+  font-family: -apple-system, Arial;
+  background: #f4f6f8;
 }
 
 h1 {
   text-align: center;
-  margin: 12px;
   font-size: 20px;
+  margin: 12px;
 }
 
-/* MAPA */
 .map {
   width: 95%;
   height: 200px;
@@ -28,7 +27,6 @@ h1 {
   margin-bottom: 15px;
 }
 
-/* CONTENIDO */
 .container {
   width: 95%;
   margin: auto;
@@ -44,7 +42,7 @@ h1 {
 
 .header {
   padding: 14px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -62,10 +60,6 @@ h1 {
   padding: 12px;
 }
 
-ul {
-  padding-left: 18px;
-}
-
 li {
   margin-bottom: 6px;
   font-size: 14px;
@@ -77,13 +71,12 @@ img {
   margin-top: 8px;
 }
 
-/* COLORES */
-.blue { background:#3498db; }
-.orange { background:#f39c12; }
-.green { background:#27ae60; }
-.purple { background:#8e44ad; }
-.gray { background:#95a5a6; }
-
+/* colores */
+.blue { background:#3498db }
+.orange { background:#e67e22 }
+.green { background:#27ae60 }
+.purple { background:#8e44ad }
+.gray { background:#95a5a6 }
 </style>
 </head>
 
@@ -91,7 +84,7 @@ img {
 
 <h1>🌴 Itinerario Gran Canaria</h1>
 
-<!-- MAPA TUYO -->
+<!-- MAPA -->
 <iframe class="map"
 src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs">
 </iframe>
@@ -103,15 +96,16 @@ src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs">
   <div class="header">Día 24 – Guayadeque + Este</div>
   <div class="content">
     <ul>
-      <li>✈️ Llegada 09:30</li>
+      <li>✈️ Llegada</li>
       <li>⛰️ Guayadeque</li>
       <li>🍽️ Tagoror</li>
       <li>📸 Tufia</li>
       <li>🌊 Melenara</li>
     </ul>
 
-    <img src="https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg">
-    <img src="https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg">
+    <img src="https://laboratoriosboniquet-my.sharepoint.com/:i:/g/personal/acuadrado_boniquet_com/IQBR0fGbE7WtQIpICVAGV_ymAddHQG1dp33d06aGZ1MtURw?e=R0skex" loading="lazy">
+    <img src="Tufia1.jpg" loading="lazy">
+    <img src="melenara.jpg" loading="lazy">
   </div>
 </div>
 
@@ -122,12 +116,12 @@ src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs">
     <ul>
       <li>📍 Puerto de Mogán</li>
       <li>🍽️ Salunna</li>
-      <li>🌅 Dunas Maspalomas</li>
+      <li>🌅 Dunas</li>
       <li>🍽️ El Senador</li>
     </ul>
 
-    <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg">
-    <img src="https://images.pexels.com/photos/533923/pexels-photo-533923.jpeg">
+    <img src="puerto-de-mogan-1.jpg" loading="lazy">
+    <img src="dunas-maspalomas.jpg" loading="lazy">
   </div>
 </div>
 
@@ -138,10 +132,11 @@ src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs">
     <ul>
       <li>⛰️ Tejeda</li>
       <li>🥾 Roque Nublo</li>
-      <li>📍 Pico de las Nieves</li>
+      <li>📍 Miradores</li>
     </ul>
 
-    <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg">
+    <img src="ROQUE1.jpg" loading="lazy">
+    <img src="barranco_vacas.jpeg" loading="lazy">
   </div>
 </div>
 
@@ -155,7 +150,7 @@ src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs">
       <li>🌅 Agaete</li>
     </ul>
 
-    <img src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg">
+    <img src="melenara.jpg" loading="lazy">
   </div>
 </div>
 
@@ -175,8 +170,7 @@ src="https://www.google.com/maps/d/embed?mid=1os-FhXIlNcwsAIcTtamjToIzm9dnAFs">
 
 <script>
 function toggle(el){
-  const content = el.querySelector('.content');
-  content.classList.toggle('open');
+  el.querySelector('.content').classList.toggle('open');
 }
 </script>
 
