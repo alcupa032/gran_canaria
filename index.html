@@ -309,6 +309,8 @@ h1 {
   border-radius: 22px 22px 0 0;
   padding: 18px;
   box-shadow: 0 -6px 20px rgba(0,0,0,0.25);
+  max-height: 88vh;
+  overflow-y: auto;
 }
 
 .detail-title {
@@ -456,12 +458,6 @@ h1 {
       <div class="note">
         Llegada, comida en cueva y tarde tranquila por la costa de Telde.
       </div>
-
-      <div class="gallery">
-        <img src="guayadeque.jpg" loading="lazy" alt="Guayadeque">
-        <img src="Tufia1.jpg" loading="lazy" alt="Tufia">
-        <img src="melenara.jpg" loading="lazy" alt="Melenara">
-      </div>
     </div>
   </div>
 
@@ -495,11 +491,6 @@ h1 {
 
       <div class="note">
         Mogán por la mañana, Salunna para comer y atardecer en las dunas.
-      </div>
-
-      <div class="gallery">
-        <img src="puerto-de-mogan-1.jpg" loading="lazy" alt="Puerto de Mogán">
-        <img src="dunas-maspalomas.jpg" loading="lazy" alt="Dunas de Maspalomas">
       </div>
     </div>
   </div>
@@ -535,11 +526,6 @@ h1 {
       <div class="note">
         Día de interior: vistas, curvas y ruta corta al Roque Nublo.
       </div>
-
-      <div class="gallery">
-        <img src="ROQUE1.jpg" loading="lazy" alt="Roque Nublo">
-        <img src="barranco_vacas.jpeg" loading="lazy" alt="Barranco de las Vacas">
-      </div>
     </div>
   </div>
 
@@ -555,6 +541,11 @@ h1 {
         </li>
 
         <li class="place">
+          <span onclick="openDetail('allende')">🍽️ Allende Triana</span>
+          <button class="nav-btn" onclick="openChoice(event, 'Allende Triana', 28.1070, -15.4150)">Ir</button>
+        </li>
+
+        <li class="place">
           <span onclick="openDetail('canteras')">🌊 Playa de Las Canteras</span>
           <button class="nav-btn" onclick="openChoice(event, 'Playa de Las Canteras', 28.1400, -15.4345)">Ir</button>
         </li>
@@ -567,11 +558,7 @@ h1 {
       </ul>
 
       <div class="note">
-        Mañana en Las Palmas y tarde con atardecer en Agaete.
-      </div>
-
-      <div class="gallery">
-        <img src="melenara.jpg" loading="lazy" alt="Costa de Gran Canaria">
+        Mañana en Las Palmas, comida en Allende Triana y tarde con atardecer en Agaete.
       </div>
     </div>
   </div>
@@ -636,6 +623,7 @@ h1 {
     <div id="detailTitle" class="detail-title"></div>
     <div id="detailBody" class="detail-body"></div>
     <div id="detailTags" class="detail-tags"></div>
+    <div id="detailGallery" class="gallery"></div>
 
     <div class="detail-actions">
       <button class="detail-go" onclick="goToDetail()">Cómo ir</button>
@@ -657,7 +645,8 @@ const detailData = {
       "Punto de salida del viaje.",
       "Úsalo para abrir directamente la navegación hacia el aeropuerto de Barcelona."
     ],
-    tags: ["Salida", "Vuelo", "BCN"]
+    tags: ["Salida", "Vuelo", "BCN"],
+    images: []
   },
 
   apartamento: {
@@ -670,7 +659,8 @@ const detailData = {
       "C. Julián Torón, 17, 35200 Telde, Las Palmas.",
       "Base del viaje para moverse por la isla."
     ],
-    tags: ["Alojamiento", "Telde", "Base"]
+    tags: ["Alojamiento", "Telde", "Base"],
+    images: []
   },
 
   aeropuerto_gc: {
@@ -684,7 +674,8 @@ const detailData = {
       "Nº Reserva: HY52K.",
       "Vehículo: Opel Corsa o similar."
     ],
-    tags: ["Llegada 09:30", "Cicar 10:00", "Reserva HY52K", "Opel Corsa"]
+    tags: ["Llegada 09:30", "Cicar 10:00", "Reserva HY52K", "Opel Corsa"],
+    images: []
   },
 
   guayadeque: {
@@ -697,7 +688,8 @@ const detailData = {
       "Conviene subir tranquilamente en coche y parar en los miradores.",
       "Buen plan para el primer día porque queda relativamente cerca de Telde y del aeropuerto."
     ],
-    tags: ["Cuevas", "Miradores", "Día 24"]
+    tags: ["Cuevas", "Miradores", "Día 24"],
+    images: ["guayadeque.jpg"]
   },
 
   tagoror: {
@@ -706,11 +698,13 @@ const detailData = {
     lat: 27.9161,
     lng: -15.4756,
     body: [
+      "Reserva a las 14:30.",
       "Restaurante en cueva dentro del entorno de Guayadeque.",
       "Plan marcado como imprescindible para comer el primer día.",
       "Idea: pedir platos canarios para compartir."
     ],
-    tags: ["Comida", "Cueva", "Reservar"]
+    tags: ["Comida", "14:30", "Cueva", "Reservar"],
+    images: ["guayadeque.jpg"]
   },
 
   tufia: {
@@ -723,7 +717,8 @@ const detailData = {
       "Buena parada corta para fotos y paseo tranquilo.",
       "No hace falta dedicarle demasiado tiempo."
     ],
-    tags: ["Fotos", "Costa", "Parada corta"]
+    tags: ["Fotos", "Costa", "Parada corta"],
+    images: ["Tufia1.jpg"]
   },
 
   melenara: {
@@ -736,7 +731,8 @@ const detailData = {
       "Buena para un paseo relajado, desayuno o última vuelta antes del aeropuerto.",
       "Encaja bien el día de llegada y el día de vuelta."
     ],
-    tags: ["Playa", "Telde", "Relax"]
+    tags: ["Playa", "Telde", "Relax"],
+    images: ["melenara.jpg"]
   },
 
   mogan: {
@@ -749,7 +745,8 @@ const detailData = {
       "Calles, puerto y fotos antes de comer en Salunna.",
       "La idea es hacerlo sin prisas antes de ir hacia Maspalomas."
     ],
-    tags: ["Paseo", "Fotos", "Día 25"]
+    tags: ["Paseo", "Fotos", "Día 25"],
+    images: ["puerto-de-mogan-1.jpg"]
   },
 
   salunna: {
@@ -758,11 +755,13 @@ const detailData = {
     lat: 27.8198,
     lng: -15.7654,
     body: [
+      "Reserva a las 14:00.",
       "Restaurante marcado como obligatorio en el viaje.",
       "Plan ideal para comer durante el día de Mogán.",
       "Conviene reservar y no comer demasiado tarde para llegar bien al atardecer en Maspalomas."
     ],
-    tags: ["Comida", "Reservar", "Imprescindible"]
+    tags: ["Comida", "14:00", "Reservar", "Imprescindible"],
+    images: ["puerto-de-mogan-1.jpg"]
   },
 
   dunas: {
@@ -775,7 +774,8 @@ const detailData = {
       "La idea es llegar por la tarde para pasear y ver el atardecer.",
       "Mejor ir con margen antes de la puesta de sol."
     ],
-    tags: ["Atardecer", "Fotos", "Imprescindible"]
+    tags: ["Atardecer", "Fotos", "Imprescindible"],
+    images: ["dunas-maspalomas.jpg"]
   },
 
   senador: {
@@ -784,11 +784,13 @@ const detailData = {
     lat: 27.7377,
     lng: -15.5988,
     body: [
+      "Reserva a las 22:00.",
       "Cena prevista después del atardecer en las dunas.",
       "Cierra el día de Mogán + Maspalomas.",
       "Buen punto para no tener que volver con prisas."
     ],
-    tags: ["Cena", "Maspalomas", "Día 25"]
+    tags: ["Cena", "22:00", "Maspalomas", "Día 25"],
+    images: ["dunas-maspalomas.jpg"]
   },
 
   tejeda: {
@@ -801,7 +803,8 @@ const detailData = {
       "Buena parada antes o después del Roque Nublo.",
       "Día de carretera de montaña, mejor ir sin prisas."
     ],
-    tags: ["Interior", "Pueblo", "Vistas"]
+    tags: ["Interior", "Pueblo", "Vistas"],
+    images: ["ROQUE1.jpg"]
   },
 
   roque: {
@@ -814,7 +817,8 @@ const detailData = {
       "Llevar agua y calzado cómodo.",
       "Mejor evitar las horas de más calor."
     ],
-    tags: ["Sendero", "Agua", "Imprescindible"]
+    tags: ["Sendero", "Agua", "Imprescindible"],
+    images: ["ROQUE1.jpg"]
   },
 
   pico: {
@@ -827,7 +831,8 @@ const detailData = {
       "Buen complemento al día de Tejeda y Roque Nublo.",
       "Si hay buena visibilidad, merece mucho la pena."
     ],
-    tags: ["Mirador", "Interior", "Vistas"]
+    tags: ["Mirador", "Interior", "Vistas"],
+    images: ["ROQUE1.jpg"]
   },
 
   vacas: {
@@ -840,7 +845,8 @@ const detailData = {
       "Conviene revisarlo según la ruta del día para no meter demasiada vuelta.",
       "Plan corto, más de foto que de estancia larga."
     ],
-    tags: ["Fotos", "Parada corta", "Interior"]
+    tags: ["Fotos", "Parada corta", "Interior"],
+    images: ["barranco_vacas.jpeg"]
   },
 
   vegueta: {
@@ -853,7 +859,22 @@ const detailData = {
       "Buen plan de mañana, combinado con Triana y Las Canteras.",
       "Ideal para paseo urbano y algo de cultura."
     ],
-    tags: ["Ciudad", "Casco histórico", "Día 27"]
+    tags: ["Ciudad", "Casco histórico", "Día 27"],
+    images: []
+  },
+
+  allende: {
+    title: "🍽️ Allende Triana",
+    place: "Allende Triana",
+    lat: 28.1070,
+    lng: -15.4150,
+    body: [
+      "Reserva a las 13:30.",
+      "Comida del día 27 en la zona de Triana.",
+      "Encaja después de pasear por Vegueta/Triana y antes de seguir hacia Las Canteras o Agaete."
+    ],
+    tags: ["Comida", "13:30", "Triana", "Día 27"],
+    images: []
   },
 
   canteras: {
@@ -866,7 +887,8 @@ const detailData = {
       "Buena para paseo, tomar algo o descansar antes de ir a Agaete.",
       "Plan cómodo dentro del día de ciudad."
     ],
-    tags: ["Playa urbana", "Las Palmas", "Paseo"]
+    tags: ["Playa urbana", "Las Palmas", "Paseo"],
+    images: []
   },
 
   agaete: {
@@ -879,7 +901,8 @@ const detailData = {
       "Zona del norte con ambiente más tranquilo.",
       "Buen cierre del día 27."
     ],
-    tags: ["Atardecer", "Norte", "Día 27"]
+    tags: ["Atardecer", "Norte", "Día 27"],
+    images: []
   },
 
   telde: {
@@ -892,7 +915,8 @@ const detailData = {
       "Útil para desayunos, compras rápidas o moverse hacia aeropuerto.",
       "Día 28 usarlo como punto tranquilo antes del vuelo."
     ],
-    tags: ["Base", "Alojamiento", "Día 28"]
+    tags: ["Base", "Alojamiento", "Día 28"],
+    images: []
   }
 };
 
@@ -942,6 +966,9 @@ function openDetail(id) {
 
   document.getElementById("detailTags").innerHTML =
     data.tags.map(tag => "<span class='detail-tag'>" + tag + "</span>").join("");
+
+  document.getElementById("detailGallery").innerHTML =
+    (data.images || []).map(img => "<img src='" + img + "' loading='lazy'>").join("");
 
   document.getElementById("detailOverlay").classList.add("active");
 }
