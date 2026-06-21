@@ -110,6 +110,7 @@ h1 {
 
 .place span {
   flex: 1;
+  cursor: pointer;
 }
 
 .nav-btn {
@@ -288,6 +289,89 @@ h1 {
   cursor: pointer;
 }
 
+/* MODAL DETALLE DE SITIO */
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10002;
+  display: none;
+  align-items: flex-end;
+}
+
+.detail-overlay.active {
+  display: flex;
+}
+
+.detail-card {
+  width: 100%;
+  background: white;
+  border-radius: 22px 22px 0 0;
+  padding: 18px;
+  box-shadow: 0 -6px 20px rgba(0,0,0,0.25);
+}
+
+.detail-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.detail-body {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.45;
+}
+
+.detail-body p {
+  margin: 8px 0;
+}
+
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.detail-tag {
+  background: #f1f1f1;
+  border-radius: 999px;
+  padding: 6px 9px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
+}
+
+.detail-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.detail-go {
+  border: none;
+  background: #111;
+  color: white;
+  border-radius: 14px;
+  padding: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.detail-close {
+  border: none;
+  background: #eee;
+  color: #111;
+  border-radius: 14px;
+  padding: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 /* iPhone */
 @media (max-width: 480px) {
   h1 {
@@ -343,27 +427,27 @@ h1 {
       <ul class="place-list">
 
         <li class="place">
-          <span>✈️ Llegada Aeropuerto Gran Canaria</span>
+          <span onclick="openDetail('aeropuerto_gc')">✈️ Llegada Aeropuerto Gran Canaria</span>
           <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">Ir</button>
         </li>
 
         <li class="place">
-          <span>⛰️ Barranco de Guayadeque</span>
+          <span onclick="openDetail('guayadeque')">⛰️ Barranco de Guayadeque</span>
           <button class="nav-btn" onclick="openChoice(event, 'Barranco de Guayadeque', 27.9146, -15.4752)">Ir</button>
         </li>
 
         <li class="place">
-          <span>🍽️ Restaurante Tagoror</span>
+          <span onclick="openDetail('tagoror')">🍽️ Restaurante Tagoror</span>
           <button class="nav-btn" onclick="openChoice(event, 'Restaurante Tagoror Guayadeque', 27.9161, -15.4756)">Ir</button>
         </li>
 
         <li class="place">
-          <span>📸 Playa Tufia</span>
+          <span onclick="openDetail('tufia')">📸 Playa Tufia</span>
           <button class="nav-btn" onclick="openChoice(event, 'Playa de Tufia', 27.9570, -15.3703)">Ir</button>
         </li>
 
         <li class="place">
-          <span>🌊 Playa de Melenara</span>
+          <span onclick="openDetail('melenara')">🌊 Playa de Melenara</span>
           <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara', 27.9915, -15.3760)">Ir</button>
         </li>
 
@@ -388,22 +472,22 @@ h1 {
       <ul class="place-list">
 
         <li class="place">
-          <span>📍 Puerto de Mogán</span>
+          <span onclick="openDetail('mogan')">📍 Puerto de Mogán</span>
           <button class="nav-btn" onclick="openChoice(event, 'Puerto de Mogán', 27.8195, -15.7657)">Ir</button>
         </li>
 
         <li class="place">
-          <span>🍽️ Salunna</span>
+          <span onclick="openDetail('salunna')">🍽️ Salunna</span>
           <button class="nav-btn" onclick="openChoice(event, 'Salunna Puerto de Mogán', 27.8198, -15.7654)">Ir</button>
         </li>
 
         <li class="place">
-          <span>🌅 Dunas de Maspalomas</span>
+          <span onclick="openDetail('dunas')">🌅 Dunas de Maspalomas</span>
           <button class="nav-btn" onclick="openChoice(event, 'Dunas de Maspalomas', 27.7401, -15.5856)">Ir</button>
         </li>
 
         <li class="place">
-          <span>🍽️ Restaurante El Senador</span>
+          <span onclick="openDetail('senador')">🍽️ Restaurante El Senador</span>
           <button class="nav-btn" onclick="openChoice(event, 'Restaurante El Senador Maspalomas', 27.7377, -15.5988)">Ir</button>
         </li>
 
@@ -427,22 +511,22 @@ h1 {
       <ul class="place-list">
 
         <li class="place">
-          <span>⛰️ Tejeda</span>
+          <span onclick="openDetail('tejeda')">⛰️ Tejeda</span>
           <button class="nav-btn" onclick="openChoice(event, 'Tejeda', 27.9957, -15.6156)">Ir</button>
         </li>
 
         <li class="place">
-          <span>🥾 Roque Nublo</span>
+          <span onclick="openDetail('roque')">🥾 Roque Nublo</span>
           <button class="nav-btn" onclick="openChoice(event, 'Roque Nublo', 27.9680, -15.6114)">Ir</button>
         </li>
 
         <li class="place">
-          <span>📍 Pico de las Nieves</span>
+          <span onclick="openDetail('pico')">📍 Pico de las Nieves</span>
           <button class="nav-btn" onclick="openChoice(event, 'Pico de las Nieves', 27.9620, -15.5715)">Ir</button>
         </li>
 
         <li class="place">
-          <span>📸 Barranco de las Vacas</span>
+          <span onclick="openDetail('vacas')">📸 Barranco de las Vacas</span>
           <button class="nav-btn" onclick="openChoice(event, 'Barranco de las Vacas', 27.9159, -15.4751)">Ir</button>
         </li>
 
@@ -466,17 +550,17 @@ h1 {
       <ul class="place-list">
 
         <li class="place">
-          <span>🏙️ Vegueta</span>
+          <span onclick="openDetail('vegueta')">🏙️ Vegueta</span>
           <button class="nav-btn" onclick="openChoice(event, 'Vegueta', 28.1007, -15.4146)">Ir</button>
         </li>
 
         <li class="place">
-          <span>🌊 Playa de Las Canteras</span>
+          <span onclick="openDetail('canteras')">🌊 Playa de Las Canteras</span>
           <button class="nav-btn" onclick="openChoice(event, 'Playa de Las Canteras', 28.1400, -15.4345)">Ir</button>
         </li>
 
         <li class="place">
-          <span>🌅 Agaete</span>
+          <span onclick="openDetail('agaete')">🌅 Agaete</span>
           <button class="nav-btn" onclick="openChoice(event, 'Agaete', 28.1006, -15.6994)">Ir</button>
         </li>
 
@@ -499,17 +583,17 @@ h1 {
       <ul class="place-list">
 
         <li class="place">
-          <span>☕ Desayuno tranquilo</span>
+          <span onclick="openDetail('telde')">☕ Desayuno tranquilo</span>
           <button class="nav-btn" onclick="openChoice(event, 'Telde', 27.9955, -15.4174)">Ir</button>
         </li>
 
         <li class="place">
-          <span>🌊 Paseo por Melenara</span>
+          <span onclick="openDetail('melenara')">🌊 Paseo por Melenara</span>
           <button class="nav-btn" onclick="openChoice(event, 'Playa de Melenara', 27.9915, -15.3760)">Ir</button>
         </li>
 
         <li class="place">
-          <span>✈️ Aeropuerto</span>
+          <span onclick="openDetail('aeropuerto_gc')">✈️ Aeropuerto</span>
           <button class="nav-btn" onclick="openChoice(event, 'Aeropuerto de Gran Canaria', 27.9319, -15.3866)">Ir</button>
         </li>
 
@@ -546,7 +630,272 @@ h1 {
   </div>
 </div>
 
+<!-- MODAL DETALLE DE SITIO -->
+<div id="detailOverlay" class="detail-overlay" onclick="closeDetail()">
+  <div class="detail-card" onclick="event.stopPropagation()">
+    <div id="detailTitle" class="detail-title"></div>
+    <div id="detailBody" class="detail-body"></div>
+    <div id="detailTags" class="detail-tags"></div>
+
+    <div class="detail-actions">
+      <button class="detail-go" onclick="goToDetail()">Cómo ir</button>
+      <button class="detail-close" onclick="closeDetail()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
 <script>
+let currentDetail = null;
+
+const detailData = {
+  bcn: {
+    title: "✈️ Aeropuerto Barcelona-El Prat",
+    place: "Aeropuerto Josep Tarradellas Barcelona-El Prat",
+    lat: 41.2971,
+    lng: 2.0785,
+    body: [
+      "Punto de salida del viaje.",
+      "Úsalo para abrir directamente la navegación hacia el aeropuerto de Barcelona."
+    ],
+    tags: ["Salida", "Vuelo", "BCN"]
+  },
+
+  apartamento: {
+    title: "🏠 Apartamento en Telde",
+    place: "C. Julián Torón, 17, 35200 Telde, Las Palmas",
+    lat: 27.9968,
+    lng: -15.4180,
+    body: [
+      "Dirección del alojamiento.",
+      "C. Julián Torón, 17, 35200 Telde, Las Palmas.",
+      "Base del viaje para moverse por la isla."
+    ],
+    tags: ["Alojamiento", "Telde", "Base"]
+  },
+
+  aeropuerto_gc: {
+    title: "✈️ Aeropuerto Gran Canaria",
+    place: "Aeropuerto de Gran Canaria",
+    lat: 27.9319,
+    lng: -15.3866,
+    body: [
+      "Llegada prevista a las 09:30.",
+      "Recogida del coche a las 10:00 en Cicar.",
+      "Nº Reserva: HY52K.",
+      "Vehículo: Opel Corsa o similar."
+    ],
+    tags: ["Llegada 09:30", "Cicar 10:00", "Reserva HY52K", "Opel Corsa"]
+  },
+
+  guayadeque: {
+    title: "⛰️ Barranco de Guayadeque",
+    place: "Barranco de Guayadeque",
+    lat: 27.9146,
+    lng: -15.4752,
+    body: [
+      "Zona de barranco con casas cueva y restaurantes excavados en la roca.",
+      "Conviene subir tranquilamente en coche y parar en los miradores.",
+      "Buen plan para el primer día porque queda relativamente cerca de Telde y del aeropuerto."
+    ],
+    tags: ["Cuevas", "Miradores", "Día 24"]
+  },
+
+  tagoror: {
+    title: "🍽️ Restaurante Tagoror",
+    place: "Restaurante Tagoror Guayadeque",
+    lat: 27.9161,
+    lng: -15.4756,
+    body: [
+      "Restaurante en cueva dentro del entorno de Guayadeque.",
+      "Plan marcado como imprescindible para comer el primer día.",
+      "Idea: pedir platos canarios para compartir."
+    ],
+    tags: ["Comida", "Cueva", "Reservar"]
+  },
+
+  tufia: {
+    title: "📸 Playa Tufia",
+    place: "Playa de Tufia",
+    lat: 27.9570,
+    lng: -15.3703,
+    body: [
+      "Pequeño enclave costero con mucho encanto visual.",
+      "Buena parada corta para fotos y paseo tranquilo.",
+      "No hace falta dedicarle demasiado tiempo."
+    ],
+    tags: ["Fotos", "Costa", "Parada corta"]
+  },
+
+  melenara: {
+    title: "🌊 Playa de Melenara",
+    place: "Playa de Melenara",
+    lat: 27.9915,
+    lng: -15.3760,
+    body: [
+      "Playa cómoda cerca de Telde.",
+      "Buena para un paseo relajado, desayuno o última vuelta antes del aeropuerto.",
+      "Encaja bien el día de llegada y el día de vuelta."
+    ],
+    tags: ["Playa", "Telde", "Relax"]
+  },
+
+  mogan: {
+    title: "📍 Puerto de Mogán",
+    place: "Puerto de Mogán",
+    lat: 27.8195,
+    lng: -15.7657,
+    body: [
+      "Zona bonita para paseo por la mañana.",
+      "Calles, puerto y fotos antes de comer en Salunna.",
+      "La idea es hacerlo sin prisas antes de ir hacia Maspalomas."
+    ],
+    tags: ["Paseo", "Fotos", "Día 25"]
+  },
+
+  salunna: {
+    title: "🍽️ Salunna",
+    place: "Salunna Puerto de Mogán",
+    lat: 27.8198,
+    lng: -15.7654,
+    body: [
+      "Restaurante marcado como obligatorio en el viaje.",
+      "Plan ideal para comer durante el día de Mogán.",
+      "Conviene reservar y no comer demasiado tarde para llegar bien al atardecer en Maspalomas."
+    ],
+    tags: ["Comida", "Reservar", "Imprescindible"]
+  },
+
+  dunas: {
+    title: "🌅 Dunas de Maspalomas",
+    place: "Dunas de Maspalomas",
+    lat: 27.7401,
+    lng: -15.5856,
+    body: [
+      "Uno de los puntos fuertes del viaje.",
+      "La idea es llegar por la tarde para pasear y ver el atardecer.",
+      "Mejor ir con margen antes de la puesta de sol."
+    ],
+    tags: ["Atardecer", "Fotos", "Imprescindible"]
+  },
+
+  senador: {
+    title: "🍽️ Restaurante El Senador",
+    place: "Restaurante El Senador Maspalomas",
+    lat: 27.7377,
+    lng: -15.5988,
+    body: [
+      "Cena prevista después del atardecer en las dunas.",
+      "Cierra el día de Mogán + Maspalomas.",
+      "Buen punto para no tener que volver con prisas."
+    ],
+    tags: ["Cena", "Maspalomas", "Día 25"]
+  },
+
+  tejeda: {
+    title: "⛰️ Tejeda",
+    place: "Tejeda",
+    lat: 27.9957,
+    lng: -15.6156,
+    body: [
+      "Pueblo de interior con vistas y ambiente tranquilo.",
+      "Buena parada antes o después del Roque Nublo.",
+      "Día de carretera de montaña, mejor ir sin prisas."
+    ],
+    tags: ["Interior", "Pueblo", "Vistas"]
+  },
+
+  roque: {
+    title: "🥾 Roque Nublo",
+    place: "Roque Nublo",
+    lat: 27.9680,
+    lng: -15.6114,
+    body: [
+      "Ruta corta pero imprescindible.",
+      "Llevar agua y calzado cómodo.",
+      "Mejor evitar las horas de más calor."
+    ],
+    tags: ["Sendero", "Agua", "Imprescindible"]
+  },
+
+  pico: {
+    title: "📍 Pico de las Nieves",
+    place: "Pico de las Nieves",
+    lat: 27.9620,
+    lng: -15.5715,
+    body: [
+      "Zona de miradores en el interior de la isla.",
+      "Buen complemento al día de Tejeda y Roque Nublo.",
+      "Si hay buena visibilidad, merece mucho la pena."
+    ],
+    tags: ["Mirador", "Interior", "Vistas"]
+  },
+
+  vacas: {
+    title: "📸 Barranco de las Vacas",
+    place: "Barranco de las Vacas",
+    lat: 27.9159,
+    lng: -15.4751,
+    body: [
+      "Parada fotográfica de barranco estrecho y formas de roca.",
+      "Conviene revisarlo según la ruta del día para no meter demasiada vuelta.",
+      "Plan corto, más de foto que de estancia larga."
+    ],
+    tags: ["Fotos", "Parada corta", "Interior"]
+  },
+
+  vegueta: {
+    title: "🏙️ Vegueta",
+    place: "Vegueta",
+    lat: 28.1007,
+    lng: -15.4146,
+    body: [
+      "Casco histórico de Las Palmas.",
+      "Buen plan de mañana, combinado con Triana y Las Canteras.",
+      "Ideal para paseo urbano y algo de cultura."
+    ],
+    tags: ["Ciudad", "Casco histórico", "Día 27"]
+  },
+
+  canteras: {
+    title: "🌊 Playa de Las Canteras",
+    place: "Playa de Las Canteras",
+    lat: 28.1400,
+    lng: -15.4345,
+    body: [
+      "Playa urbana principal de Las Palmas.",
+      "Buena para paseo, tomar algo o descansar antes de ir a Agaete.",
+      "Plan cómodo dentro del día de ciudad."
+    ],
+    tags: ["Playa urbana", "Las Palmas", "Paseo"]
+  },
+
+  agaete: {
+    title: "🌅 Agaete",
+    place: "Agaete",
+    lat: 28.1006,
+    lng: -15.6994,
+    body: [
+      "Plan de tarde para terminar el día con atardecer.",
+      "Zona del norte con ambiente más tranquilo.",
+      "Buen cierre del día 27."
+    ],
+    tags: ["Atardecer", "Norte", "Día 27"]
+  },
+
+  telde: {
+    title: "☕ Telde",
+    place: "Telde",
+    lat: 27.9955,
+    lng: -15.4174,
+    body: [
+      "Zona base del alojamiento.",
+      "Útil para desayunos, compras rápidas o moverse hacia aeropuerto.",
+      "Día 28 usarlo como punto tranquilo antes del vuelo."
+    ],
+    tags: ["Base", "Alojamiento", "Día 28"]
+  }
+};
+
 function toggleCard(header) {
   const content = header.nextElementSibling;
   content.classList.toggle("open");
@@ -578,6 +927,38 @@ function openChoice(event, place, lat, lng) {
 
 function closeChoice() {
   document.getElementById("choiceOverlay").classList.remove("active");
+}
+
+function openDetail(id) {
+  const data = detailData[id];
+  if (!data) return;
+
+  currentDetail = data;
+
+  document.getElementById("detailTitle").innerText = data.title;
+
+  document.getElementById("detailBody").innerHTML =
+    data.body.map(item => "<p>" + item + "</p>").join("");
+
+  document.getElementById("detailTags").innerHTML =
+    data.tags.map(tag => "<span class='detail-tag'>" + tag + "</span>").join("");
+
+  document.getElementById("detailOverlay").classList.add("active");
+}
+
+function closeDetail() {
+  document.getElementById("detailOverlay").classList.remove("active");
+}
+
+function goToDetail() {
+  if (!currentDetail) return;
+  closeDetail();
+  openChoice(
+    { stopPropagation: function(){} },
+    currentDetail.place,
+    currentDetail.lat,
+    currentDetail.lng
+  );
 }
 </script>
 
